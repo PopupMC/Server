@@ -17,11 +17,10 @@ index d363d517c05b3335101d829ce4ec22d049059c24..abbe545af572687a0399c2387434863c
  import java.util.List;
  import java.util.Map;
  import java.util.WeakHashMap;
-@@ -130,6 +131,26 @@ public abstract class MetadataStoreBase<T> {
-         }
+@@ -131,6 +132,26 @@ public abstract class MetadataStoreBase<T> {
      }
  
-+    /**
+     /**
 +     * Removes all metadata in the metadata store that originates from the
 +     * given plugin.
 +     *
@@ -41,6 +40,7 @@ index d363d517c05b3335101d829ce4ec22d049059c24..abbe545af572687a0399c2387434863c
 +        }
 +    }
 +
-     /**
++    /**
       * Creates a unique name for the object receiving metadata by combining
       * unique data from the subject with a metadataKey.
+      * <p>

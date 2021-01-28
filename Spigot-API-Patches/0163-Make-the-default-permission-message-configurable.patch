@@ -8,11 +8,10 @@ diff --git a/src/main/java/org/bukkit/Bukkit.java b/src/main/java/org/bukkit/Buk
 index f5fac807cce22819cba5878a6e2664f0f82f1ae3..e83f0852d187524a0068a81875323b01e3fd5cbd 100644
 --- a/src/main/java/org/bukkit/Bukkit.java
 +++ b/src/main/java/org/bukkit/Bukkit.java
-@@ -1615,6 +1615,15 @@ public final class Bukkit {
-         return server.suggestPlayerNamesWhenNullTabCompletions();
+@@ -1616,6 +1616,15 @@ public final class Bukkit {
      }
  
-+    /**
+     /**
 +     *
 +     * @return the default no permission message used on the server
 +     */
@@ -21,27 +20,28 @@ index f5fac807cce22819cba5878a6e2664f0f82f1ae3..e83f0852d187524a0068a81875323b01
 +        return server.getPermissionMessage();
 +    }
 +
-     /**
++    /**
       * Creates a PlayerProfile for the specified uuid, with name as null
       * @param uuid UUID to create profile for
+      * @return A PlayerProfile object
 diff --git a/src/main/java/org/bukkit/Server.java b/src/main/java/org/bukkit/Server.java
 index 11fffc514ed1f0b00b09c0cdb5272ea79340972c..fa855cacec894a0efb254e8a9729a9787464f17d 100644
 --- a/src/main/java/org/bukkit/Server.java
 +++ b/src/main/java/org/bukkit/Server.java
-@@ -1414,6 +1414,13 @@ public interface Server extends PluginMessageRecipient {
-      */
+@@ -1415,6 +1415,13 @@ public interface Server extends PluginMessageRecipient {
      boolean suggestPlayerNamesWhenNullTabCompletions();
  
-+    /**
+     /**
 +     *
 +     * @return the default no permission message used on the server
 +     */
 +    @NotNull
 +    String getPermissionMessage();
 +
-     /**
++    /**
       * Creates a PlayerProfile for the specified uuid, with name as null
       * @param uuid UUID to create profile for
+      * @return A PlayerProfile object
 diff --git a/src/main/java/org/bukkit/command/Command.java b/src/main/java/org/bukkit/command/Command.java
 index 03bdc1622791e1206406c87065978688d602e39e..0b0d1bd7c4d5ca5241561211e86a9d1acf1893d2 100644
 --- a/src/main/java/org/bukkit/command/Command.java

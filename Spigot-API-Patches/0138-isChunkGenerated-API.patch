@@ -5,7 +5,7 @@ Subject: [PATCH] isChunkGenerated API
 
 
 diff --git a/src/main/java/org/bukkit/Location.java b/src/main/java/org/bukkit/Location.java
-index 07e532cde37255ffb2db368453bb69ee0a410931..6e1a1124a6e528c1a94ccb1d09bc5dccf056b0b8 100644
+index e700875beb76dadd55b585aca748338def286908..9c91c49ed7302c12fcb1d8e9bc58712efc199954 100644
 --- a/src/main/java/org/bukkit/Location.java
 +++ b/src/main/java/org/bukkit/Location.java
 @@ -3,6 +3,7 @@ package org.bukkit;
@@ -37,11 +37,10 @@ diff --git a/src/main/java/org/bukkit/World.java b/src/main/java/org/bukkit/Worl
 index 08aebaedce935faa1a2c54c5abc02b85896df216..42b91634a131f8705cbde96b6068d5881a393fb7 100644
 --- a/src/main/java/org/bukkit/World.java
 +++ b/src/main/java/org/bukkit/World.java
-@@ -254,6 +254,17 @@ public interface World extends PluginMessageRecipient, Metadatable {
-         return getChunkAt((int) chunkKey, (int) (chunkKey >> 32));
+@@ -255,6 +255,17 @@ public interface World extends PluginMessageRecipient, Metadatable {
      }
  
-+    /**
+     /**
 +     * Checks if a {@link Chunk} has been generated at the specified chunk key,
 +     * which is the X and Z packed into a long.
 +     *
@@ -52,6 +51,7 @@ index 08aebaedce935faa1a2c54c5abc02b85896df216..42b91634a131f8705cbde96b6068d588
 +        return isChunkGenerated((int) chunkKey, (int) (chunkKey >> 32));
 +    }
 +
-     /**
++    /**
       * This is the Legacy API before Java 8 was supported. Java 8 Consumer is provided,
       * as well as future support
+      *

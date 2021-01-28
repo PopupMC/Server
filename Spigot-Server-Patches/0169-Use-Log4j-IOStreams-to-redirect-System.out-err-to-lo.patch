@@ -15,18 +15,18 @@ diff --git a/pom.xml b/pom.xml
 index aeaceac771644ece5365d07be77f4481ced2fe13..25e327c38cc3aa1f9ad9275faba481bdb4240e25 100644
 --- a/pom.xml
 +++ b/pom.xml
-@@ -66,6 +66,11 @@
-             <version>2.8.1</version>
+@@ -67,6 +67,11 @@
              <scope>runtime</scope>
          </dependency>
-+        <dependency>
+         <dependency>
 +            <groupId>org.apache.logging.log4j</groupId>
 +            <artifactId>log4j-iostreams</artifactId>
 +            <version>2.8.1</version>
 +        </dependency>
-         <dependency>
++        <dependency>
              <groupId>org.ow2.asm</groupId>
              <artifactId>asm</artifactId>
+             <version>7.3.1</version>
 diff --git a/src/main/java/net/minecraft/server/DedicatedServer.java b/src/main/java/net/minecraft/server/DedicatedServer.java
 index d34f772fae3543cec6a130831b1f3eaa67934944..ec257ba31f012d3d3576bbff41326df13ede6776 100644
 --- a/src/main/java/net/minecraft/server/DedicatedServer.java

@@ -1,0 +1,76 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: June hanabi <junehanabi@gmail.com>
+Date: Tue, 17 Nov 2020 20:05:28 -0500
+Subject: [PATCH] Flying squid
+
+
+diff --git a/src/main/java/net/minecraft/server/EntitySquid.java b/src/main/java/net/minecraft/server/EntitySquid.java
+index 92efe4e7f50fa10bcdff52fb51a9b814d995c8c9..6ea209940f08192d2ef4e3c73cbe0355de6d165a 100644
+--- a/src/main/java/net/minecraft/server/EntitySquid.java
++++ b/src/main/java/net/minecraft/server/EntitySquid.java
+@@ -23,6 +23,13 @@ public class EntitySquid extends EntityWaterAnimal {
+         super(entitytypes, world);
+         //this.random.setSeed((long) this.getId()); // Paper
+         this.bC = 1.0F / (this.random.nextFloat() + 1.0F) * 0.2F;
++        this.setNoGravity(true);
++        this.a(PathType.OPEN, 0.0F);
++    }
++
++    @Override
++    public boolean isInWater() {
++        return true;
+     }
+ 
+     @Override
+@@ -171,8 +178,9 @@ public class EntitySquid extends EntityWaterAnimal {
+     }
+ 
+     public static boolean b(EntityTypes<EntitySquid> entitytypes, GeneratorAccess generatoraccess, EnumMobSpawn enummobspawn, BlockPosition blockposition, Random random) {
+-        final double maxHeight = generatoraccess.getMinecraftWorld().paperConfig.squidMaxSpawnHeight > 0 ? generatoraccess.getMinecraftWorld().paperConfig.squidMaxSpawnHeight : generatoraccess.getSeaLevel(); // Paper
+-        return blockposition.getY() > generatoraccess.getMinecraftWorld().spigotConfig.squidSpawnRangeMin && blockposition.getY() < maxHeight; // Spigot // Paper
++        return blockposition.getY() < 100;
++//        final double maxHeight = generatoraccess.getMinecraftWorld().paperConfig.squidMaxSpawnHeight > 0 ? generatoraccess.getMinecraftWorld().paperConfig.squidMaxSpawnHeight : generatoraccess.getSeaLevel(); // Paper
++//        return blockposition.getY() > generatoraccess.getMinecraftWorld().spigotConfig.squidSpawnRangeMin && blockposition.getY() < maxHeight; // Spigot // Paper
+     }
+ 
+     public void a(float f, float f1, float f2) {
+@@ -195,7 +203,7 @@ public class EntitySquid extends EntityWaterAnimal {
+         public boolean a() {
+             EntityLiving entityliving = EntitySquid.this.getLastDamager();
+ 
+-            return EntitySquid.this.isInWater() && entityliving != null ? EntitySquid.this.h((Entity) entityliving) < 100.0D : false;
++            return entityliving != null ? EntitySquid.this.h((Entity) entityliving) < 100.0D : false;
+         }
+ 
+         @Override
+@@ -213,7 +221,7 @@ public class EntitySquid extends EntityWaterAnimal {
+                 IBlockData iblockdata = EntitySquid.this.world.getType(new BlockPosition(EntitySquid.this.locX() + vec3d.x, EntitySquid.this.locY() + vec3d.y, EntitySquid.this.locZ() + vec3d.z));
+                 Fluid fluid = EntitySquid.this.world.getFluid(new BlockPosition(EntitySquid.this.locX() + vec3d.x, EntitySquid.this.locY() + vec3d.y, EntitySquid.this.locZ() + vec3d.z));
+ 
+-                if (fluid.a(TagsFluid.WATER) || iblockdata.isAir()) {
++                if (true) {
+                     double d0 = vec3d.f();
+ 
+                     if (d0 > 0.0D) {
+@@ -229,9 +237,9 @@ public class EntitySquid extends EntityWaterAnimal {
+                         }
+                     }
+ 
+-                    if (iblockdata.isAir()) {
+-                        vec3d = vec3d.a(0.0D, vec3d.y, 0.0D);
+-                    }
++//                    if (iblockdata.isAir()) {
++//                        vec3d = vec3d.a(0.0D, vec3d.y, 0.0D);
++//                    }
+ 
+                     EntitySquid.this.a((float) vec3d.x / 20.0F, (float) vec3d.y / 20.0F, (float) vec3d.z / 20.0F);
+                 }
+@@ -263,7 +271,7 @@ public class EntitySquid extends EntityWaterAnimal {
+ 
+             if (i > 100) {
+                 this.b.a(0.0F, 0.0F, 0.0F);
+-            } else if (this.b.getRandom().nextInt(50) == 0 || !this.b.inWater || !this.b.l()) {
++            } else if (this.b.getRandom().nextInt(50) == 0 || !this.b.l()) {
+                 float f = this.b.getRandom().nextFloat() * 6.2831855F;
+                 float f1 = MathHelper.cos(f) * 0.2F;
+                 float f2 = -0.1F + this.b.getRandom().nextFloat() * 0.2F;

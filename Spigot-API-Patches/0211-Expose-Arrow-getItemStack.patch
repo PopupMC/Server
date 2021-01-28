@@ -8,11 +8,10 @@ diff --git a/src/main/java/org/bukkit/entity/AbstractArrow.java b/src/main/java/
 index e8e56e89e32d84af0639fe2e9b0eeabd747b6007..b1d8007eed489aa061c1a6813bcdafc101231e56 100644
 --- a/src/main/java/org/bukkit/entity/AbstractArrow.java
 +++ b/src/main/java/org/bukkit/entity/AbstractArrow.java
-@@ -143,6 +143,14 @@ public interface AbstractArrow extends Projectile {
-     }
+@@ -144,6 +144,14 @@ public interface AbstractArrow extends Projectile {
  
      // Paper start
-+    /**
+     /**
 +     * Gets the ItemStack for this arrow.
 +     *
 +     * @return The ItemStack, as if a player picked up the arrow
@@ -20,6 +19,7 @@ index e8e56e89e32d84af0639fe2e9b0eeabd747b6007..b1d8007eed489aa061c1a6813bcdafc1
 +    @NotNull
 +    org.bukkit.inventory.ItemStack getItemStack();
 +
-     /**
++    /**
       * Gets the {@link PickupRule} for this arrow.
       *
+      * <p>This is generally {@link PickupRule#ALLOWED} only if the arrow was

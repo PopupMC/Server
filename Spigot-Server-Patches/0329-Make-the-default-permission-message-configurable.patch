@@ -32,15 +32,15 @@ diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/ja
 index 7b53ebb6d7cf241c6b89ec04acd0bcc25e1c105a..811e676e4f9f1f8beb8eb9e20cef3ef03633a856 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -2180,6 +2180,11 @@ public final class CraftServer implements Server {
-         return com.destroystokyo.paper.PaperConfig.suggestPlayersWhenNullTabCompletions;
+@@ -2181,6 +2181,11 @@ public final class CraftServer implements Server {
      }
  
-+    @Override
+     @Override
 +    public String getPermissionMessage() {
 +        return com.destroystokyo.paper.PaperConfig.noPermissionMessage;
 +    }
 +
-     @Override
++    @Override
      public com.destroystokyo.paper.profile.PlayerProfile createProfile(@Nonnull UUID uuid) {
          return createProfile(uuid, null);
+     }

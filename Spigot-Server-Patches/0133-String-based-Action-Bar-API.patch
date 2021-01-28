@@ -8,11 +8,10 @@ diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java b/src/
 index a85638fb4022361cb17cac0d666f26cdd1a5ef11..a4afce71be0707c43700b73ae0107074448e3d4a 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
-@@ -215,6 +215,18 @@ public class CraftPlayer extends CraftHumanEntity implements Player {
-     }
+@@ -216,6 +216,18 @@ public class CraftPlayer extends CraftHumanEntity implements Player {
  
      // Paper start
-+    @Override
+     @Override
 +    public void sendActionBar(String message) {
 +        if (getHandle().playerConnection == null || message == null || message.isEmpty()) return;
 +        getHandle().playerConnection.sendPacket(new PacketPlayOutChat(new net.minecraft.server.ChatComponentText(message), net.minecraft.server.ChatMessageType.GAME_INFO));
@@ -24,6 +23,7 @@ index a85638fb4022361cb17cac0d666f26cdd1a5ef11..a4afce71be0707c43700b73ae0107074
 +        sendActionBar(org.bukkit.ChatColor.translateAlternateColorCodes(alternateChar, message));
 +    }
 +
-     @Override
++    @Override
      public void setPlayerListHeaderFooter(BaseComponent[] header, BaseComponent[] footer) {
           if (header != null) {
+              String headerJson = net.md_5.bungee.chat.ComponentSerializer.toString(header);
